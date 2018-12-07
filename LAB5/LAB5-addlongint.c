@@ -87,7 +87,6 @@ void add(struct node *num1, struct node *num2, struct node *res)
     }
 }
 
-
 void display(struct node *res)
 {
     struct node *ptr=res;
@@ -98,6 +97,32 @@ void display(struct node *res)
         ptr=ptr->next;
     }
 }
+
+free1(struct node *n, struct node *m, struct node *k)
+{
+  struct node *p, *q, *r;
+  for(p=n->next;p!=n;)
+  {
+    n->next=p->next;
+    free(p);
+    p=n->next;
+  }
+
+  for(q=m->next;q!=m;)
+  {
+    m->next=q->next;
+    free(q);
+    q=m->next;
+  }
+
+  for(r=k->next;r!=k;)
+  {
+    k->next=r->next;
+    free(r);
+    r=k->next;
+  }
+}
+
 int main()
 {
     int i;
@@ -120,4 +145,5 @@ int main()
     }
     add(&num1,&num2,&res);
     display(&res);
+    freel(&num1,&num2,&num3);
 }
